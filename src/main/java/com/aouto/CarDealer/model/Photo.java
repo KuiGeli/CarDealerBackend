@@ -2,8 +2,6 @@ package com.aouto.CarDealer.model;
 
 
 import javax.persistence.*;
-import java.io.File;
-import java.sql.Blob;
 
 @Entity
 public class Photo {
@@ -12,7 +10,7 @@ public class Photo {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(length = 1000)
+    @Column(length = 100000)
     private byte[] image;
 
     @ManyToOne(fetch = FetchType.LAZY)

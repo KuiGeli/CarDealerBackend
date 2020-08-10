@@ -12,9 +12,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.Arrays;
-import java.util.List;
 import java.util.zip.Deflater;
 
 @Service
@@ -28,13 +25,13 @@ public class PhotoService {
     }
 
 
-    public BodyBuilder uploadImage(InputStream file) throws IOException {
+    public Photo uploadImage(MultipartFile file) throws IOException {
+
         Photo photo = new Photo();
-        byte[] bytes = new byte[file.available()];
-        file.read(bytes);
-        photo.setImage(bytes);
+        photo.setImage(compressImage(file.getBytes()));
         photoRep.save(photo);
-        return ResponseEntity.status(HttpStatus.OK);
+
+        return photo;
 
     }
 

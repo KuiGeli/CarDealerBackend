@@ -23,4 +23,8 @@ public class AutoService {
     public Auto findById(long id){
         return autoRep.findById(id).get();
     }
+
+    public void save(Auto auto) {
+        autoRep.save(auto);
+    }
 }
