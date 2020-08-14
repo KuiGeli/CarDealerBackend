@@ -13,11 +13,7 @@ public class AutoService {
     @Autowired
     public AutoService(AutoRep autoRep) {
         this.autoRep = autoRep;
-        Auto auto = new Auto();
-        auto.setMark("Audi");
-        auto.setPrice("64645");
-        auto.setType("TT");
-        autoRep.save(auto);
+
     }
 
     public Auto findById(long id){

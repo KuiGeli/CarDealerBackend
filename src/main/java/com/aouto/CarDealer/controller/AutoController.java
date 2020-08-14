@@ -3,12 +3,10 @@ package com.aouto.CarDealer.controller;
 import com.aouto.CarDealer.model.Auto;
 import com.aouto.CarDealer.service.AutoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("auto/")
+@RequestMapping(path = "auto")
 public class AutoController {
 
         AutoService autoService;
@@ -19,8 +17,10 @@ public class AutoController {
     }
 
 
-    @RequestMapping("/save")
-    public void save(@RequestParam("Mark") String mark, @RequestParam String type, @RequestParam String price){
+    @PostMapping("/save")
+    @CrossOrigin("*")
+    public void save(@RequestParam("mark") String mark, @RequestParam("type") String type, @RequestParam("price") String price){
+        System.out.println("Works");
             Auto auto = new Auto();
             auto.setMark(mark);
             auto.setType(type);
